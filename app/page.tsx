@@ -1,7 +1,25 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+import { ModeToggle } from "@/components/ui/theme";
+
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Hello
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground p-6">
+      <div className="flex justify-between w-full max-w-2xl">
+        <h1 className="text-3xl font-bold">ShadCN + Tailwind Demo</h1>
+        <ModeToggle />
+      </div>
+
+      <Card className="mt-8 w-full max-w-md">
+        <CardContent className="p-6">
+          <p className="text-lg">
+            This is a sample card using the theme variables.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Button className="mt-6">Primary Button</Button>
     </div>
   );
 }
