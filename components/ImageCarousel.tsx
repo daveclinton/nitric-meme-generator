@@ -64,6 +64,8 @@ export function ImageCarousel({
                   timing={timing}
                   failed={failedProviders.includes(provider)}
                   enabled={enabledProviders[provider]}
+                  topText="When you finally"
+                  bottomText="Fix that bug"
                 />
                 <div className="text-center text-sm text-muted-foreground mt-4">
                   {i + 1} of {providers.length}

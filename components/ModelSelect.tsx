@@ -137,6 +137,8 @@ export function ModelSelect({
           image={image}
           timing={timing}
           failed={failed}
+          topText="When you finally"
+          bottomText="Fix that bug"
         />
       </CardContent>
     </Card>

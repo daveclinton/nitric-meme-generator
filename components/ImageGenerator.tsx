@@ -107,6 +107,8 @@ export function ImageGenerator({
               failed={failedProviders.includes(provider)}
               enabled={enabledProviders[provider]}
               modelId={imageItem?.modelId ?? ""}
+              topText="When you finally"
+              bottomText="Fix that bug"
             />
           );
         })}
