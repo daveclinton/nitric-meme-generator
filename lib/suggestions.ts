@@ -3,116 +3,123 @@ export interface Suggestion {
   prompt: string;
 }
 
-const artStyles = ["anime", "art nouveau", "ukiyo-e", "watercolor"];
+const artStyles = [
+  "grunge",
+  "punk zine",
+  "distressed collage",
+  "crayon doodle",
+];
 
 const basePrompts: { text: string; prompt: string }[] = [
   {
-    text: "Salamander Dusk",
-    prompt: "A salamander at dusk in a forest pond",
-  },
-  {
-    text: "Sultry Chicken",
+    text: "Whiskey Wisdom",
     prompt:
-      "A sultry chicken peering around the corner from shadows, clearly up to no good",
+      "A scruffy man in a stained bathrobe, holding a whiskey bottle, lecturing a cat about the meaning of life in a dimly lit alley.",
   },
   {
-    text: "Cat Vercel",
-    prompt: "A cat launching its website on Vercel",
-  },
-  {
-    text: "Red Panda",
+    text: "Dumpster Throne",
     prompt:
-      "A red panda sipping tea under cherry blossoms at sunset with Mount Fuji in the background",
+      "A guy in a tattered tracksuit sitting on a pile of garbage like it's a throne, holding a half-eaten pizza slice like a royal scepter.",
   },
   {
-    text: "Beach Otter",
-    prompt: "A mischievous otter surfing the waves in Bali at golden hour",
-  },
-  {
-    text: "Badger Ramen",
-    prompt: "A pensive honey badger eating a bowl of ramen in Osaka",
-  },
-  {
-    text: "Zen Frog",
+    text: "Beer Baptism",
     prompt:
-      "A frog meditating on a lotus leaf in a tranquil forest pond at dawn, surrounded by fireflies",
+      "A drunk pigeon being 'baptized' with a can of cheap beer by a disheveled man shouting about enlightenment.",
   },
   {
-    text: "Macaw Love",
+    text: "Toaster Spa",
     prompt:
-      "A colorful macaw delivering a love letter, flying over the Grand Canyon at sunrise",
+      "A raccoon chilling in a broken toaster, cucumber slices on its eyes, pretending it's a luxury spa.",
   },
   {
-    text: "Fox Painting",
-    prompt: "A fox walking through a field of lavender with a golden sunset",
-  },
-  {
-    text: "Armadillo Aerospace",
+    text: "Cigarette Samurai",
     prompt:
-      "An armadillo in a rocket at countdown preparing to blast off to Mars",
+      "A rugged-looking man in a bathrobe wielding a bent cigarette like a samurai sword, ready to duel a very unimpressed goose.",
   },
   {
-    text: "Penguin Delight",
-    prompt: "A penguin in pajamas eating ice cream while watching television",
-  },
-  {
-    text: "Echidna Library",
+    text: "Subway Sorcerer",
     prompt:
-      "An echidna reading a book in a cozy library built into the branches of a eucalyptus tree",
+      "A bearded man in a wizard robe (probably a blanket) casting spells on subway rats with a traffic cone as a staff.",
   },
   {
-    text: "Capybara Onsen",
+    text: "Meth Lab Chihuahua",
     prompt:
-      "A capybara relaxing in a hot spring surrounded by snow-covered mountains with a waterfall in the background",
+      "A shaky chihuahua in an oversized hoodie, staring at the camera like it just discovered the secrets of the universe.",
   },
   {
-    text: "Lion Throne",
+    text: "Expired Milk Prophet",
     prompt:
-      "A regal lion wearing a crown, sitting on a throne in a jungle palace, with waterfalls in the distance",
+      "A man preaching on the street while holding a carton of expired milk, warning strangers about the impending dairy apocalypse.",
   },
   {
-    text: "Dolphin Glow",
+    text: "Couch Pirate",
     prompt:
-      "A dolphin leaping through a glowing ring of bioluminescence under a starry sky",
+      "A man wearing an eyepatch, digging for 'treasure' between couch cushions, celebrating wildly after finding a single fry.",
   },
   {
-    text: "Owl Detective",
+    text: "Bathroom Philosopher",
     prompt:
-      "An owl wearing a monocle and top hat, solving a mystery in a misty forest at midnight",
+      "A guy sitting on a toilet, completely zoned out, contemplating life while holding an empty roll of toilet paper.",
   },
   {
-    text: "Jellyfish Cathedral",
+    text: "Homeless Jedi",
     prompt:
-      "A jellyfish floating gracefully in an underwater cathedral made of coral and glass",
+      "A bearded man waving around a broken broomstick like a lightsaber, dueling an invisible Sith Lord in an alleyway.",
   },
   {
-    text: "Platypus River",
-    prompt: "A platypus foraging in a river with a sunset in the background",
-  },
-  {
-    text: "Chameleon Urban",
+    text: "Hangover Renaissance",
     prompt:
-      "A chameleon blending into a graffiti-covered wall in an urban jungle",
+      "A man lying on the floor, beer cans surrounding him, gazing at the ceiling like he's in a Renaissance painting.",
   },
   {
-    text: "Tortoise Oasis",
+    text: "Ferret Crime Boss",
     prompt:
-      "A giant tortoise slowly meandering its way to an oasis in the desert",
+      "A ferret wearing tiny sunglasses and a gold chain, sitting atop a stack of stolen wallets, plotting its next heist.",
   },
   {
-    text: "Hummingbird Morning",
+    text: "Pizza Cult",
     prompt:
-      "A hummingbird sipping nectar from a purple bougainvillea at sunrise, captured mid-flight",
+      "A group of people in tattered robes chanting around a half-eaten pizza slice like it’s a sacred relic.",
   },
   {
-    text: "Polar Bear",
+    text: "Grocery Store Gladiator",
     prompt:
-      "A polar bear clambering onto an iceberg to greet a friendly harbor seal as dusk falls",
+      "A man in an oversized hoodie, wielding a baguette like a sword, preparing for battle in the supermarket aisle.",
   },
   {
-    text: "Lemur Sunbathing",
+    text: "Rat King Ruler",
     prompt:
-      "A ring-tailed lemur sunbathing on a rock in Madagascar in early morning light",
+      "A scruffy man wearing a crown made of soda cans, surrounded by an army of well-trained alley rats.",
+  },
+  {
+    text: "Cursed Vending Machine",
+    prompt:
+      "A man furiously shaking a vending machine, convinced it's conspiring against him while a raccoon watches in amusement.",
+  },
+  {
+    text: "Laundry Mat Oracle",
+    prompt:
+      "A woman staring into a spinning washing machine like it's a crystal ball, mumbling about 'the prophecies.'",
+  },
+  {
+    text: "Pigeon Mafia",
+    prompt:
+      "A group of pigeons huddled together on a rooftop, looking extremely suspicious, as if they're plotting a coup.",
+  },
+  {
+    text: "Sewer Tavern",
+    prompt:
+      "A group of raccoons huddled around a burning trash can, drinking from stolen soda cans like medieval tavern-goers.",
+  },
+  {
+    text: "Half-Eaten Sandwich Saga",
+    prompt:
+      "A guy in a trench coat dramatically retrieving a half-eaten sandwich from the sidewalk as if it’s a lost relic.",
+  },
+  {
+    text: "TV Static Guru",
+    prompt:
+      "A man in a foil hat staring at a static-filled TV screen, claiming he’s receiving messages from 'beyond the grid.'",
   },
 ];
 
