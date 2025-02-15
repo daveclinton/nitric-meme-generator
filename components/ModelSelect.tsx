@@ -130,7 +130,6 @@ export function ModelSelect({
             </div>
           </div>
         </div>
-
         <ImageDisplay
           modelId={modelId}
           provider={providerKey}
