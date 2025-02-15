@@ -22,8 +22,8 @@ interface ImageDisplayProps {
   fallbackIcon?: React.ReactNode;
   enabled?: boolean;
   modelId: string;
-  topText: string;
-  bottomText: string;
+  topText?: string;
+  bottomText?: string;
 }
 
 export function ImageDisplay({
@@ -33,8 +33,8 @@ export function ImageDisplay({
   failed,
   fallbackIcon,
   modelId,
-  topText,
-  bottomText,
+  topText = "",
+  bottomText = "",
 }: ImageDisplayProps) {
   const [isZoomed, setIsZoomed] = useState(false);
 
