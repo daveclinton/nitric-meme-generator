@@ -1,32 +1,44 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ArrowUpRight, ArrowUp, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { getRandomSuggestions, Suggestion } from "@/lib/suggestions";
 
-export function PromptInput() {
-  const [input, setInput] = useState("");
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+type QualityMode = "performance" | "quality";
 
-  useEffect(() => {
-    setSuggestions(getRandomSuggestions());
-  }, []);
+interface PromptInputProps {
+  onSubmit: (prompt: string) => void;
+  isLoading?: boolean;
+  showProviders: boolean;
+  onToggleProviders: () => void;
+  mode: QualityMode;
+  onModeChange: (mode: QualityMode) => void;
+  suggestions: Suggestion[];
+}
+
+export function PromptInput({
+  suggestions: initSuggestions,
+  isLoading,
+  onSubmit,
+}: PromptInputProps) {
+  const [input, setInput] = useState("");
+  const [suggestions, setSuggestions] = useState<Suggestion[]>(initSuggestions);
 
   const handleSubmit = () => {
     if (!isLoading && input.trim()) {
-      setIsLoading(true);
-      setTimeout(() => setIsLoading(false), 1000);
+      onSubmit(input);
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit();
+      if (!isLoading && input.trim()) {
+        onSubmit(input);
+      }
     }
   };
 
