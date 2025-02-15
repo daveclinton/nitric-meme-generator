@@ -1,29 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Header } from "./Header";
 import { PromptInput } from "./PromptInput";
 import { ModelMode } from "@/lib/provider-config";
-import { getRandomSuggestions, Suggestion } from "@/lib/suggestions";
+import { Suggestion } from "@/lib/suggestions";
 
-export function ImageGround() {
+export function ImageGround({ suggestions }: { suggestions: Suggestion[] }) {
   const [isLoading, setIsLoading] = useState(false);
   const [showProviders, setShowProviders] = useState(true);
-
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [mode, setMode] = useState<ModelMode>("performance");
 
   const handlePromptSubmit = () => {
     setIsLoading(true);
     setTimeout(() => setIsLoading(false), 1000);
   };
+
   const toggleView = () => {
     setShowProviders((prev) => !prev);
   };
 
-  useEffect(() => {
-    setSuggestions(getRandomSuggestions());
-  }, []);
-
-  const [mode, setMode] = useState<ModelMode>("performance");
   const handleModeChange = (newMode: ModelMode) => {
     setMode(newMode);
     setShowProviders(true);
