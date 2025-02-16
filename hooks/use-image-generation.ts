@@ -1,3 +1,4 @@
+// useImageGeneration.ts
 import { useState } from "react";
 import { ImageError, ImageResult, ProviderTiming } from "@/lib/image-types";
 import { initializeProviderRecord, ProviderKey } from "@/lib/provider-config";
@@ -43,7 +44,6 @@ export function useImageGeneration(): UseImageGenerationReturn {
     setActivePrompt(prompt);
     try {
       setIsLoading(true);
-      // Initialize images array with null values
       setImages(
         providers.map((provider) => ({
           provider,
@@ -52,11 +52,9 @@ export function useImageGeneration(): UseImageGenerationReturn {
         }))
       );
 
-      // Clear previous state
       setErrors([]);
       setFailedProviders([]);
 
-      // Initialize timings with start times
       const now = Date.now();
       setTimings(
         Object.fromEntries(
@@ -64,31 +62,36 @@ export function useImageGeneration(): UseImageGenerationReturn {
         ) as Record<ProviderKey, ProviderTiming>
       );
 
-      // Helper to fetch a single provider
       const generateImage = async (provider: ProviderKey, modelId: string) => {
         const startTime = now;
         console.log(
           `Generate image request [provider=${provider}, modelId=${modelId}]`
         );
         try {
-          const request = {
-            prompt,
-            provider,
-            modelId,
-          };
-
-          const response = await fetch("/api/generate-images", {
+          const response = await fetch("http://localhost:4001/generate-image", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(request),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              "Accept-Encoding": "gzip",
+            },
+            body: JSON.stringify({
+              prompt,
+              provider,
+              modelId,
+            }),
           });
-          const data = await response.json();
+
           if (!response.ok) {
-            throw new Error(data.error || `Server error: ${response.status}`);
+            const errorText = await response.text();
+            throw new Error(`Server error ${response.status}: ${errorText}`);
           }
 
+          // Handle the compressed response
+          const data = await response.json();
           const completionTime = Date.now();
           const elapsed = completionTime - startTime;
+
           setTimings((prev) => ({
             ...prev,
             [provider]: {
@@ -102,7 +105,6 @@ export function useImageGeneration(): UseImageGenerationReturn {
             `Successful image response [provider=${provider}, modelId=${modelId}, elapsed=${elapsed}ms]`
           );
 
-          // Update image in state
           setImages((prevImages) =>
             prevImages.map((item) =>
               item.provider === provider
@@ -137,7 +139,6 @@ export function useImageGeneration(): UseImageGenerationReturn {
         }
       };
 
-      // Generate images for all active providers
       const fetchPromises = providers.map((provider) => {
         const modelId = providerToModel[provider];
         return generateImage(provider, modelId);
