@@ -1,0 +1,3 @@
+name: serverless-meme
+provider: nitric/aws@latest
+region: us-east-1  

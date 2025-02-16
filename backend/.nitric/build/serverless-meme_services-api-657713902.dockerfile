@@ -24,7 +24,7 @@ RUN test -f tsconfig.json || echo "{\"compilerOptions\":{\"esModuleInterop\":tru
 COPY . .
 
 RUN --mount=type=cache,target=/tmp/ncc-cache \
-    ncc build ${HANDLER} -o lib/ -t
+  ncc build ${HANDLER} -o lib/ -t
 
 FROM node:22.4.1-alpine as final
 

@@ -55,3 +55,17 @@
 {"level":"info","msg":"[2623g] Request body: {\n  prompt: 'A bearded man waving around a broken broomstick li...',\n  provider: 'openai',\n  modelId: 'dall-e-2'\n}\n","origin":"services/api.ts","time":"2025-02-16T11:45:32.200+03:00"}
 {"level":"info","msg":"[2623g] Sending request to OpenAI API\n","origin":"services/api.ts","time":"2025-02-16T11:45:32.200+03:00"}
 {"level":"info","msg":"[2623g] Request completed successfully\n","origin":"services/api.ts","time":"2025-02-16T11:45:48.028+03:00"}
+{"level":"info","msg":"started service services/api.ts","origin":"nitric","time":"2025-02-16T12:36:59.866+03:00"}
+{"level":"info","msg":"\n\u003e typescript-starter@1.0.0 dev:services\n\u003e nodemon -r dotenv/config services/api.ts\n\n","origin":"services/api.ts","time":"2025-02-16T12:37:00.143+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] 3.1.9\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:37:00.588+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] to restart at any time, enter `rs`\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:37:00.589+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] watching path(s): *.*\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:37:00.590+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] watching extensions: ts,json\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:37:00.590+03:00"}
+{"level":"info","msg":"\u001b[32m[nodemon] starting `ts-node -r dotenv/config services/api.ts`\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:37:00.591+03:00"}
+{"level":"info","msg":"started service services/api.ts","origin":"nitric","time":"2025-02-16T12:51:10.731+03:00"}
+{"level":"info","msg":"\n\u003e typescript-starter@1.0.0 dev:services\n\u003e nodemon -r dotenv/config services/api.ts\n\n","origin":"services/api.ts","time":"2025-02-16T12:51:10.962+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] 3.1.9\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:51:11.370+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] to restart at any time, enter `rs`\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:51:11.371+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] watching path(s): *.*\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:51:11.372+03:00"}
+{"level":"info","msg":"\u001b[33m[nodemon] watching extensions: ts,json\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:51:11.373+03:00"}
+{"level":"info","msg":"\u001b[32m[nodemon] starting `ts-node -r dotenv/config services/api.ts`\u001b[39m\n","origin":"services/api.ts","time":"2025-02-16T12:51:11.375+03:00"}

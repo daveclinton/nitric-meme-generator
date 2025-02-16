@@ -68,19 +68,22 @@ export function useImageGeneration(): UseImageGenerationReturn {
           `Generate image request [provider=${provider}, modelId=${modelId}]`
         );
         try {
-          const response = await fetch("http://localhost:4001/generate-image", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              "Accept-Encoding": "gzip",
-            },
-            body: JSON.stringify({
-              prompt,
-              provider,
-              modelId,
-            }),
-          });
+          const response = await fetch(
+            "https://jr2x099uf7.execute-api.us-east-1.amazonaws.com/generate-image",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "Accept-Encoding": "gzip",
+              },
+              body: JSON.stringify({
+                prompt,
+                provider,
+                modelId,
+              }),
+            }
+          );
 
           if (!response.ok) {
             const errorText = await response.text();

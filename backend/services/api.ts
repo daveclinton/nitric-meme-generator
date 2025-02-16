@@ -2,6 +2,7 @@ import { api } from "@nitric/sdk";
 import OpenAI from "openai";
 import zlib from "zlib";
 import { promisify } from "util";
+import "dotenv/config";
 
 const gzip = promisify(zlib.gzip);
 
@@ -11,11 +12,7 @@ const DEFAULT_IMAGE_SIZE = "1024x1024";
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": ["*"],
   "Access-Control-Allow-Methods": ["POST", "OPTIONS"],
-  "Access-Control-Allow-Headers": [
-    "Content-Type",
-    "Authorization",
-    "Accept-Encoding",
-  ],
+  "Access-Control-Allow-Headers": ["Content-Type", "Accept-Encoding"],
   "Access-Control-Max-Age": ["86400"],
 };
 
