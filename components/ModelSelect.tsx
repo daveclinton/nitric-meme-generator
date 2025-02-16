@@ -16,6 +16,7 @@ import Link from "next/link";
 import { ImageDisplay } from "./ImageDisplay";
 import { ProviderTiming } from "@/lib/image-types";
 import { imageHelpers } from "@/lib/image-helpers";
+import { useMemeContext } from "@/hooks/useMemeContext";
 
 interface ModelSelectProps {
   label: string;
@@ -57,6 +58,7 @@ export function ModelSelect({
   modelId,
 }: ModelSelectProps) {
   const Icon = PROVIDER_ICONS[providerKey];
+  const { topText, bottomText } = useMemeContext();
 
   return (
     <Card
@@ -130,13 +132,14 @@ export function ModelSelect({
             </div>
           </div>
         </div>
-
         <ImageDisplay
           modelId={modelId}
           provider={providerKey}
           image={image}
           timing={timing}
           failed={failed}
+          topText={topText}
+          bottomText={bottomText}
         />
       </CardContent>
     </Card>
