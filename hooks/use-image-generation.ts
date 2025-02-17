@@ -69,7 +69,7 @@ export function useImageGeneration(): UseImageGenerationReturn {
         );
         try {
           const response = await fetch(
-            `${process.env.NEXT_APP_URL}/generate-image`,
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/generate-image`,
             {
               method: "POST",
               headers: {
