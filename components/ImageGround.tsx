@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./Header";
 import { PromptInput } from "./PromptInput";
 import {
@@ -14,6 +14,7 @@ import { Suggestion } from "@/lib/suggestions";
 import { ModelCardCarousel } from "./ModelCardCarousel";
 import { ModelSelect } from "./ModelSelect";
 import { useImageGeneration } from "@/hooks/use-image-generation";
+import { toast } from "@/hooks/use-toast";
 
 export function ImageGround({ suggestions }: { suggestions: Suggestion[] }) {
   const {
@@ -23,6 +24,7 @@ export function ImageGround({ suggestions }: { suggestions: Suggestion[] }) {
     isLoading,
     startGeneration,
     activePrompt,
+    errors,
   } = useImageGeneration();
 
   const [showProviders, setShowProviders] = useState(true);
@@ -65,6 +67,30 @@ export function ImageGround({ suggestions }: { suggestions: Suggestion[] }) {
     }
     setShowProviders(false);
   };
+
+  useEffect(() => {
+    if (errors.length > 0) {
+      errors.forEach((error) => {
+        toast({
+          title: "Image Generation Error",
+          description: `Provider: ${error.provider} - ${error.message}`,
+          variant: "destructive",
+        });
+      });
+    }
+  }, [errors]);
+
+  useEffect(() => {
+    images.forEach((image) => {
+      if (image.image) {
+        toast({
+          title: "Image Generated Successfully",
+          description: `Provider: ${image.provider} - Model: ${image.modelId}`,
+          variant: "default",
+        });
+      }
+    });
+  }, [images]);
 
   return (
     <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
