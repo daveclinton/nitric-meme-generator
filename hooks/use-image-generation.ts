@@ -1,4 +1,3 @@
-// useImageGeneration.ts
 import { useState } from "react";
 import { ImageError, ImageResult, ProviderTiming } from "@/lib/image-types";
 import { initializeProviderRecord, ProviderKey } from "@/lib/provider-config";
