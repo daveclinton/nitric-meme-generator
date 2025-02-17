@@ -11,6 +11,7 @@
 !.yarn/versions
 
 /backend/node_modules
+/backend/.nitric
 
 # testing
 /coverage
